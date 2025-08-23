@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-KnowMe Setup Script with Silent Installation Experience
+KnowMe Setup Script with Complete Silent Installation Experience
 """
 
 import sys
@@ -12,15 +12,36 @@ from setuptools import setup, find_packages
 from setuptools.command.install import install
 from setuptools.command.develop import develop
 
-class SilentInstallCommand(install):
-    """Custom installation with silent progress indication."""
+class CompleteSilentInstallCommand(install):
+    """Custom installation that completely hides pip output."""
     
     def run(self):
-        # Show minimal progress during installation
-        print("🚀 Setting up KnowMe...")
+        # Completely silent installation
+        original_stdout = sys.stdout
+        original_stderr = sys.stderr
         
-        # Run the actual installation
-        install.run(self)
+        try:
+            # Redirect all output to devnull during installation
+            with open(os.devnull, 'w') as devnull:
+                sys.stdout = devnull
+                sys.stderr = devnull
+                
+                # Show our custom progress
+                sys.stdout = original_stdout
+                sys.stderr = original_stderr
+                print("🚀 Installing KnowMe silently...")
+                
+                # Redirect again for actual installation
+                sys.stdout = devnull
+                sys.stderr = devnull
+                
+                # Run the actual installation
+                install.run(self)
+                
+        finally:
+            # Restore output
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
         
         # Post-install actions
         self._post_install()
@@ -77,13 +98,13 @@ def read_long_description():
 
 setup(
     name="knowme",
-    version="1.0.4",
+    version="1.0.5",
     author="Hrishi Mehta",
-    author_email="mehtahrishi@gmail.com",
-    description="A fast, offline command-line tool that displays detailed system info with text-based ASCII art. Now with mobile/Termux support!",
+    author_email="mehtahrishi45@gmail.com",
+    description="A fast, offline command-line tool that displays detailed system info with text-based ASCII art. Silent installation with progress bar!",
     long_description=read_long_description(),
     long_description_content_type="text/markdown",
-    url="https://github.com/mehtahrishi/KnowMe",
+    url="https://github.com/mehtahrishi/knowme",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -111,14 +132,13 @@ setup(
     entry_points={
         "console_scripts": [
             "knowme=knowme.__main__:main",
-            "knowme-silent-install=silent_install:silent_pip_install",
         ],
     },
     cmdclass={
-        'install': SilentInstallCommand,
+        'install': CompleteSilentInstallCommand,
         'develop': SilentDevelopCommand,
     },
-    keywords=["system", "info", "neofetch", "cli", "terminal", "ascii", "mobile", "termux", "android"],
+    keywords=["system", "info", "neofetch", "cli", "terminal", "ascii", "mobile", "termux", "android", "silent"],
     project_urls={
         "Bug Tracker": "https://github.com/mehtahrishi/knowme/issues",
         "Documentation": "https://github.com/mehtahrishi/knowme#readme",

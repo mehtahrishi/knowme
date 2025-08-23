@@ -1,16 +1,16 @@
 Metadata-Version: 2.4
 Name: knowme
-Version: 1.0.4
-Summary: A fast, offline command-line tool that displays detailed system info with text-based ASCII art logos. Now with mobile/Termux support!
-Home-page: https://github.com/mehtahrishi/KnowMe
+Version: 1.0.5
+Summary: A fast, offline command-line tool that displays detailed system info with text-based ASCII art logos. Silent installation with progress bar!
+Home-page: https://github.com/mehtahrishi/knowme
 Author: Hrishi Mehta
 Author-email: Hrishi Mehta <mehtahrishi45@gmail.com>
 License: MIT
-Project-URL: Homepage, https://github.com/mehtahrishi/KnowMe
-Project-URL: Bug Tracker, https://github.com/mehtahrishi/KnowMe/issues
-Project-URL: Documentation, https://github.com/mehtahrishi/KnowMe#readme
-Project-URL: Source Code, https://github.com/mehtahrishi/KnowMe
-Keywords: system,info,neofetch,cli,terminal,ascii,mobile,termux,android
+Project-URL: Homepage, https://github.com/mehtahrishi/knowme
+Project-URL: Bug Tracker, https://github.com/mehtahrishi/knowme/issues
+Project-URL: Documentation, https://github.com/mehtahrishi/knowme#readme
+Project-URL: Source Code, https://github.com/mehtahrishi/knowme
+Keywords: system,info,neofetch,cli,terminal,ascii,mobile,termux,android,silent
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Environment :: Console
 Classifier: Intended Audience :: Developers
