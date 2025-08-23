@@ -2,14 +2,14 @@ Metadata-Version: 2.4
 Name: knowme
 Version: 1.0.4
 Summary: A fast, offline command-line tool that displays detailed system info with text-based ASCII art logos. Now with mobile/Termux support!
-Home-page: https://github.com/mehta/knowme
-Author: Mehta
-Author-email: Mehta <mehta@example.com>
+Home-page: https://github.com/mehtahrishi/KnowMe
+Author: Hrishi Mehta
+Author-email: Hrishi Mehta <mehtahrishi45@gmail.com>
 License: MIT
-Project-URL: Homepage, https://github.com/mehta/knowme
-Project-URL: Bug Tracker, https://github.com/mehta/knowme/issues
-Project-URL: Documentation, https://github.com/mehta/knowme#readme
-Project-URL: Source Code, https://github.com/mehta/knowme
+Project-URL: Homepage, https://github.com/mehtahrishi/KnowMe
+Project-URL: Bug Tracker, https://github.com/mehtahrishi/KnowMe/issues
+Project-URL: Documentation, https://github.com/mehtahrishi/KnowMe#readme
+Project-URL: Source Code, https://github.com/mehtahrishi/KnowMe
 Keywords: system,info,neofetch,cli,terminal,ascii,mobile,termux,android
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Environment :: Console
@@ -67,7 +67,7 @@ pip install knowme
 ### From Source
 
 ```bash
-git clone https://github.com/mehta/knowme.git
+git clone https://github.com/mehtahrishi/knowme.git
 cd knowme
 pip install .
 ```
@@ -75,7 +75,7 @@ pip install .
 ### Development Installation
 
 ```bash
-git clone https://github.com/mehta/knowme.git
+git clone https://github.com/mehtahrishi/knowme.git
 cd knowme
 pip install -e .
 ```
