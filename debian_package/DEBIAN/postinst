@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+# Install knowme via pip after package installation
+pip3 install knowme
+
+exit 0

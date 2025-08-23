@@ -1,9 +1,12 @@
+LICENSE
+MANIFEST.in
 README.md
 pyproject.toml
 setup.py
 knowme/__init__.py
 knowme/__main__.py
 knowme/ascii.py
+knowme/installer.py
 knowme/logos.py
 knowme/system_info.py
 knowme/utils.py

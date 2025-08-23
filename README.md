@@ -1,37 +1,86 @@
-# knowme System Info CLI
+# KnowMe
 
-`knowme` is a fast, offline, cross-platform command-line tool that displays detailed system information alongside a classic, `neofetch`-style ASCII logo for your operating system.
+A fast, offline command-line tool that displays detailed system information with a classic, neofetch-style ASCII logo.
 
 ## Features
 
--   **Works completely offline.** No internet connection or API keys needed.
--   **Iconic ASCII Logos:** Pre-defined, high-quality logos for Windows, macOS, Ubuntu, Debian, Arch, Fedora, and more.
--   **Detailed System Info:** Displays your OS, kernel, uptime, CPU, GPU, memory, disk usage, resolution, local IP, and more.
--   **Instant Execution:** No loading bars or delays.
+- 🚀 **Fast & Offline**: No internet connection required
+- 🎨 **Beautiful ASCII Art**: OS-specific logos and colorful output
+- 📊 **Comprehensive Info**: CPU, Memory, Storage, Network, and more
+- 🔧 **Cross-Platform**: Works on Linux, macOS, and Windows
+- 💻 **Lightweight**: Minimal dependencies and resource usage
 
 ## Installation
 
-1.  **Clone the repository (or just download the files):**
-    ```bash
-    git clone https://github.com/yourusername/knowme.git
-    cd knowme
-    ```
+### From PyPI (Recommended)
 
-2.  **Create a virtual environment (recommended):**
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
+```bash
+pip install knowme
+```
 
-3.  **Install in editable mode:**
-    This command installs the tool and all necessary Python packages.
-    ```bash
-    pip install -e .
-    ```
+### From Source
+
+```bash
+git clone https://github.com/mehtahrishi/knowme.git
+cd knowme
+pip install .
+```
+
+### Development Installation
+
+```bash
+git clone https://github.com/mehtahrishi/knowme.git
+cd knowme
+pip install -e .
+```
 
 ## Usage
 
-After installation, simply run the command:
+Simply run the command:
 
 ```bash
 knowme
+```
+
+This will display your system information in a beautiful two-column layout with an ASCII logo.
+
+## System Information Displayed
+
+- **Operating System**: Name, version, and architecture
+- **Kernel**: Kernel version and release info
+- **CPU**: Model, cores, threads, and current frequency
+- **Memory**: Total, used, and available RAM
+- **Storage**: Disk usage for all mounted drives
+- **Network**: Active interfaces and IP addresses
+- **GPU**: Graphics card information (if available)
+- **Display**: Screen resolution and refresh rate
+- **Uptime**: System uptime
+- **Shell**: Current shell and version
+- **Terminal**: Terminal emulator information
+
+## Requirements
+
+- Python 3.7 or higher
+- Works on Linux, macOS, and Windows
+
+## Dependencies
+
+- `psutil` - System and process utilities
+- `distro` - Linux distribution information
+- `py-cpuinfo` - CPU information
+- `requests` - HTTP library
+- `gputil` - GPU utilities
+- `screeninfo` - Display information
+- `ifaddr` - Network interface addresses
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+Inspired by neofetch and other system information tools.

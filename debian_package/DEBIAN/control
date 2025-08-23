@@ -1,0 +1,13 @@
+Package: knowme
+Version: 1.0.0
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3 (>= 3.7), python3-pip
+Maintainer: mehtahrishi <mehtahrishi@gmail.com>
+Description: A fast, offline command-line tool for system information
+ KnowMe displays detailed system information with a classic, neofetch-style
+ ASCII logo. It works completely offline and supports Linux, macOS, and Windows.
+ .
+ Features include CPU, memory, storage, network information display with
+ beautiful ASCII art and colorful output.
