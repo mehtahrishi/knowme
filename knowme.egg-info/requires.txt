@@ -1,0 +1,7 @@
+psutil
+distro
+py-cpuinfo
+requests
+gputil
+screeninfo
+ifaddr

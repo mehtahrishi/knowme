@@ -1,0 +1,61 @@
+Metadata-Version: 2.4
+Name: knowme
+Version: 1.0.0
+Summary: A fast, offline command-line tool that displays detailed system info with a classic, neofetch-style ASCII logo.
+Home-page: https://github.com/yourusername/knowme
+Author: Gemini
+Author-email: Your Name <you@example.com>
+Project-URL: Homepage, https://github.com/pypa/sampleproject
+Project-URL: Bug Tracker, https://github.com/pypa/sampleproject/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: psutil
+Requires-Dist: distro
+Requires-Dist: py-cpuinfo
+Requires-Dist: requests
+Requires-Dist: gputil
+Requires-Dist: screeninfo
+Requires-Dist: ifaddr
+Dynamic: author
+Dynamic: home-page
+
+# knowme System Info CLI
+
+`knowme` is a fast, offline, cross-platform command-line tool that displays detailed system information alongside a classic, `neofetch`-style ASCII logo for your operating system.
+
+## Features
+
+-   **Works completely offline.** No internet connection or API keys needed.
+-   **Iconic ASCII Logos:** Pre-defined, high-quality logos for Windows, macOS, Ubuntu, Debian, Arch, Fedora, and more.
+-   **Detailed System Info:** Displays your OS, kernel, uptime, CPU, GPU, memory, disk usage, resolution, local IP, and more.
+-   **Instant Execution:** No loading bars or delays.
+
+## Installation
+
+1.  **Clone the repository (or just download the files):**
+    ```bash
+    git clone https://github.com/yourusername/knowme.git
+    cd knowme
+    ```
+
+2.  **Create a virtual environment (recommended):**
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+3.  **Install in editable mode:**
+    This command installs the tool and all necessary Python packages.
+    ```bash
+    pip install -e .
+    ```
+
+## Usage
+
+After installation, simply run the command:
+
+```bash
+knowme
