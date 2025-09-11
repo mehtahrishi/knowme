@@ -466,6 +466,22 @@ body.dark-mode .footer-info a:hover {
 .background-shapes li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
 .background-shapes li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
 
+.installation-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.installation-card-span-2 {
+    grid-column: span 2;
+}
+
+.installation-card-span-3 {
+    grid-column: span 3;
+}
+
+.installation-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 @keyframes float {
     0% {
         transform: translateY(0) rotate(0deg);

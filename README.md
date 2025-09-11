@@ -1,86 +1,184 @@
 # KnowMe
 
-A fast, offline command-line tool that displays detailed system information with a classic, neofetch-style ASCII logo.
 
-## Features
+<div align="center">
+ <img src="https://raw.githubusercontent.com/mehtahrishi/knowme/main/site/image.jpg" alt="KnowMe Demo Screenshot" width="800"/>
+  <h3>🚀 Fast, offline system information tool with beautiful ASCII art</h3>
+  [![PyPI version](https://badge.fury.io/py/knowme.svg)](https://badge.fury.io/py/knowme)
+ [![NPM version](https://badge.fury.io/js/knowme-cli.svg)](https://badge.fury.io/js/knowme-cli)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+ [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+</div>
 
-- 🚀 **Fast & Offline**: No internet connection required
-- 🎨 **Beautiful ASCII Art**: OS-specific logos and colorful output
-- 📊 **Comprehensive Info**: CPU, Memory, Storage, Network, and more
-- 🔧 **Cross-Platform**: Works on Linux, macOS, and Windows
-- 💻 **Lightweight**: Minimal dependencies and resource usage
 
-## Installation
+## ✨ Features
 
-### From PyPI (Recommended)
 
+- 🚀 **Blazing Fast**: Get system information instantly, no waiting
+- 🌐 **Fully Offline**: Works anywhere, no internet connection required 
+- 🎨 **Beautiful ASCII Art**: OS-specific logos with colorful output
+- 📊 **Comprehensive Info**: CPU, Memory, Storage, Network, GPU, and more
+- 🔧 **Cross-Platform**: Linux, macOS, Windows, and mobile (Termux)
+- 💻 **Lightweight**: Minimal dependencies, won't slow down your system
+- 📱 **Mobile Support**: Works perfectly on Android via Termux
+
+
+## 🖥️ System Information Displayed
+
+
+- **Operating System**: Name, version, and architecture
+- **Kernel**: Version and release information
+- **CPU**: Model, cores, threads, and frequency
+- **Memory**: Total, used, and available RAM
+- **Storage**: Disk usage for all mounted drives
+- **Network**: Active interfaces, IP addresses, and MAC addresses
+- **GPU**: Graphics card information (when available)
+- **Display**: Screen resolution and refresh rate
+- **System**: Uptime, running processes, and top memory consumers
+- **Shell**: Current shell and version information
+- **Terminal**: Terminal emulator details
+
+
+## 📦 Installation
+
+
+### 🐍 PyPI (Recommended)
 ```bash
 pip install knowme
 ```
 
-### From Source
 
+### 🟢 NPM
 ```bash
-git clone https://github.com/mehtahrishi/knowme.git
-cd knowme
-pip install .
+# Run directly
+npx knowme-cli
+
+
+# Or install globally
+npm install -g knowme-cli
+knowme
 ```
 
-### Development Installation
 
+### 🐧 APT (Ubuntu/Debian)
 ```bash
-git clone https://github.com/mehtahrishi/knowme.git
-cd knowme
-pip install -e .
+echo "deb [trusted=yes] https://mehtahrishi.github.io/knowme/apt stable main" | sudo tee /etc/apt/sources.list.d/knowme.list
+sudo apt update
+sudo apt install knowme
 ```
 
-## Usage
+
+### 📥 Direct Download (.deb)
+```bash
+# Download the latest .deb package
+wget https://github.com/mehtahrishi/knowme/releases/download/v1.0.5/knowme_1.0.5_all.deb
+
+
+# Install
+sudo dpkg -i knowme_1.0.5_all.deb
+```
+
+
+### 📱 Mobile (Termux)
+```bash
+# Install Termux from F-Droid or Google Play
+# Then run:
+pkg install python
+pip install knowme
+```
+
+
+## 🚀 Usage
+
 
 Simply run the command:
-
 ```bash
 knowme
 ```
 
-This will display your system information in a beautiful two-column layout with an ASCII logo.
 
-## System Information Displayed
+That's it! KnowMe will display your system information with a beautiful ASCII logo.
 
-- **Operating System**: Name, version, and architecture
-- **Kernel**: Kernel version and release info
-- **CPU**: Model, cores, threads, and current frequency
-- **Memory**: Total, used, and available RAM
-- **Storage**: Disk usage for all mounted drives
-- **Network**: Active interfaces and IP addresses
-- **GPU**: Graphics card information (if available)
-- **Display**: Screen resolution and refresh rate
-- **Uptime**: System uptime
-- **Shell**: Current shell and version
-- **Terminal**: Terminal emulator information
 
-## Requirements
+## 🔧 Requirements
 
-- Python 3.7 or higher
-- Works on Linux, macOS, and Windows
 
-## Dependencies
+- **Python**: 3.7 or higher
+- **Operating Systems**: Linux, macOS, Windows
+- **Mobile**: Android (via Termux)
 
+
+## 📚 Dependencies
+
+
+KnowMe uses these lightweight Python packages:
 - `psutil` - System and process utilities
-- `distro` - Linux distribution information
+- `distro` - Linux distribution information 
 - `py-cpuinfo` - CPU information
 - `requests` - HTTP library
 - `gputil` - GPU utilities
 - `screeninfo` - Display information
 - `ifaddr` - Network interface addresses
 
-## Contributing
+
+## 🌟 Why KnowMe?
+
+
+### vs. neofetch
+- **Faster**: Pure Python implementation, no shell scripting overhead
+- **More Info**: Additional details like network info, running processes
+- **Better Mobile Support**: Works perfectly on Termux
+- **Multiple Install Methods**: pip, npm, apt, direct download
+
+
+### vs. Other Tools
+- **Offline First**: No internet required, works in air-gapped environments
+- **Cross-Platform**: Single tool works everywhere
+- **Lightweight**: Minimal resource usage
+- **Modern**: Active development with regular updates
+
+
+## 🤝 Contributing
+
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Acknowledgments
 
-Inspired by neofetch and other system information tools.
+## 📄 License
+
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## 🔗 Links
+
+
+- **Website**: [https://mehtahrishi.github.io/knowme/](https://mehtahrishi.github.io/knowme/)
+- **PyPI**: [https://pypi.org/project/knowme/](https://pypi.org/project/knowme/)
+- **NPM**: [https://www.npmjs.com/package/knowme-cli](https://www.npmjs.com/package/knowme-cli)
+- **GitHub**: [https://github.com/mehtahrishi/knowme](https://github.com/mehtahrishi/knowme)
+
+
+## 👨‍💻 Author
+
+
+**Hrishi Mehta**
+- GitHub: [@mehtahrishi](https://github.com/mehtahrishi)
+- Email: mehtahrishi45@gmail.com
+
+
+---
+
+
+<div align="center">
+ <strong>⭐ Star this repo if you find it useful!</strong>
+</div>
+
+
