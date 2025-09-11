@@ -124,36 +124,28 @@
                     </div>
                 </div>
                 <div class="card installation-card">
+                    <h3>NPM Package</h3>
+                    <div class="code-block">
+                        <pre><code>npx knowme-cli</code></pre>
+                        <button class="copy-btn" data-package-manager="npm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                    </div>
+                </div>
+                <div class="card installation-card">
                     <h3>Debian Package (.deb)</h3>
                     <div class="code-block">
-                        <pre><code>sudo dpkg -i knowme_latest.deb</code></pre>
+                        <pre><code>sudo dpkg -i knowme_1.0.5_all.deb</code></pre>
                         <button class="copy-btn" data-package-manager="deb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-                <div class="card installation-card">
-                    <h3>Snap Package (snap)</h3>
-                    <div class="code-block">
-                        <pre><code>sudo snap install knowme</code></pre>
-                        <button class="copy-btn" data-package-manager="snap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-                <div class="card installation-card">
-                    <h3>AUR (Arch Linux - yay)</h3>
-                    <div class="code-block">
-                        <pre><code>yay -S knowme</code></pre>
-                        <button class="copy-btn" data-package-manager="yay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
                 <div class="card installation-card apt-installation-card">
                     <h3>APT Repository (Debian/Ubuntu)</h3>
                     <div class="code-block">
-                        <pre><code>sudo add-apt-repository ppa:knowme/ppa
+                        <pre><code>echo "deb [trusted=yes] https://mehtahrishi.github.io/knowme/apt stable main" | sudo tee /etc/apt/sources.list.d/knowme.list
 sudo apt update
 sudo apt install knowme</code></pre>
                         <button class="copy-btn" data-package-manager="apt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
-                
             </div>
         </section>
 
