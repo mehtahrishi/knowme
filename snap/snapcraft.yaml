@@ -7,18 +7,12 @@ description: |
   installation, cross-platform support, and works on mobile via Termux.
 
 grade: stable
-confinement: strict
+confinement: classic
 base: core22
 
 apps:
   knowme:
     command: bin/knowme
-    plugs:
-      - network
-      - system-observe
-      - hardware-observe
-      - mount-observe
-      - process-control
 
 parts:
   knowme:

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KnowMe APT Repository</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .code { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>KnowMe APT Repository</h1>
+    <p>Fast, offline system information tool with ASCII art</p>
+    
+    <h2>Installation</h2>
+    <p>Add repository:</p>
+    <div class="code">
+        echo "deb [trusted=yes] https://mehtahrishi.github.io/knowme/apt stable main" | sudo tee /etc/apt/sources.list.d/knowme.list<br>
+        sudo apt update
+    </div>
+    
+    <p>Install:</p>
+    <div class="code">
+        sudo apt install knowme
+    </div>
+    
+    <h2>Other Installation Methods</h2>
+    <ul>
+        <li><strong>PyPI:</strong> <code>pip install knowme</code></li>
+        <li><strong>Snap:</strong> <code>sudo snap install knowme --classic</code></li>
+        <li><strong>GitHub:</strong> Download .deb from releases</li>
+    </ul>
+</body>
+</html>
