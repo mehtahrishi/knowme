@@ -3,12 +3,13 @@
 
 <div align="center">
  <img src="https://raw.githubusercontent.com/mehtahrishi/knowme/main/docs/image2.png" alt="KnowMe Demo Screenshot" width="800"/>
-  <h3>🚀 Fast, offline system information tool with beautiful ASCII art</h3>
-  [![PyPI version](https://badge.fury.io/py/knowme.svg)](https://badge.fury.io/py/knowme)
- [![NPM version](https://badge.fury.io/js/knowme-cli.svg)](https://badge.fury.io/js/knowme-cli)
- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
- [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+ <h3>🚀 Fast, offline system information tool with beautiful ASCII art</h3>
+ <a href="https://badge.fury.io/py/knowme"><img src="https://badge.fury.io/py/knowme.svg" alt="PyPI version"></a>
+ <a href="https://badge.fury.io/js/knowme-cli"><img src="https://badge.fury.io/js/knowme-cli.svg" alt="NPM version"></a>
+ <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT"></a>
+ <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.7+-blue.svg" alt="Python 3.7+"></a>
 </div>
+
 
 
 ## ✨ Features
