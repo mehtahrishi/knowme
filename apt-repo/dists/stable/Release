@@ -1,9 +1,0 @@
-Origin: KnowMe Repository
-Label: KnowMe
-Suite: stable
-Codename: stable
-Version: 1.0
-Architectures: all amd64 i386
-Components: main
-Description: KnowMe system information tool repository
-Date: Thu, 11 Sep 2025 06:00:19 +0000
