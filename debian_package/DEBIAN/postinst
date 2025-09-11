@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 
-# Install knowme via pip after package installation
-pip3 install knowme
+# Check if pipx is available, if not install via pip with --break-system-packages
+if command -v pipx >/dev/null 2>&1; then
+    pipx install knowme
+else
+    pip3 install knowme --break-system-packages
+fi
 
 exit 0
