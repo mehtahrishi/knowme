@@ -1,0 +1,24 @@
+Package: knowme
+Version: 1.0.5
+Architecture: all
+Maintainer: Hrishi Mehta <mehtahrishi45@gmail.com>
+Depends: python3 (>= 3.7), python3-psutil, python3-distro, python3-requests
+Filename: pool/main/k/knowme/knowme_1.0.5_all.deb
+Size: 10594
+MD5sum: 1b283eb174c13b1926110b6ff3061dcc
+SHA1: 4898dbfc69b9cb77701e58d25a88e6d41151928a
+SHA256: bfb454e7513db06d378ec8713a957caeaa2fb047d78ff9b03edce22e47525595
+Section: utils
+Priority: optional
+Homepage: https://github.com/mehtahrishi/knowme
+Description: Fast, offline system information tool with ASCII art
+ KnowMe is a command-line tool that displays detailed system information
+ with beautiful text-based ASCII art logos. Features include:
+ .
+  * Fast & offline operation
+  * Cross-platform support (Linux, macOS, Windows, Android)
+  * Beautiful ASCII art logos for different OS
+  * Silent installation with progress bars
+  * Comprehensive system information display
+  * Mobile support via Termux
+

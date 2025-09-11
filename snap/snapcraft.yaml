@@ -24,7 +24,7 @@ parts:
   knowme:
     plugin: python
     source: .
-    python-requirements:
+    python-packages:
       - psutil>=5.8.0
       - distro>=1.6.0
       - py-cpuinfo>=8.0.0
@@ -32,5 +32,3 @@ parts:
       - gputil>=1.4.0
       - screeninfo>=0.6.0
       - ifaddr>=0.1.7
-    stage-packages:
-      - python3-dev
