@@ -1,0 +1,36 @@
+name: knowme
+version: '1.0.5'
+summary: Fast, offline system information tool with ASCII art
+description: |
+  KnowMe is a fast, offline command-line tool that displays detailed system 
+  information with beautiful text-based ASCII art logos. Features silent 
+  installation, cross-platform support, and works on mobile via Termux.
+
+grade: stable
+confinement: strict
+base: core22
+
+apps:
+  knowme:
+    command: bin/knowme
+    plugs:
+      - network
+      - system-observe
+      - hardware-observe
+      - mount-observe
+      - process-control
+
+parts:
+  knowme:
+    plugin: python
+    source: .
+    python-requirements:
+      - psutil>=5.8.0
+      - distro>=1.6.0
+      - py-cpuinfo>=8.0.0
+      - requests>=2.25.0
+      - gputil>=1.4.0
+      - screeninfo>=0.6.0
+      - ifaddr>=0.1.7
+    stage-packages:
+      - python3-dev

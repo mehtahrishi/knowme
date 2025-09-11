@@ -1,0 +1,8 @@
+# Generated SRCINFO for AUR submission
+pkgbase = knowme
+	pkgdesc = A fast, offline command-line tool that displays detailed system info with text-based ASCII art logos
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/mehtahrishi/knowme
+	arch = any
+	license = MIT
