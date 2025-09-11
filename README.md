@@ -2,7 +2,7 @@
 
 
 <div align="center">
- <img src="[https://raw.githubusercontent.com/mehtahrishi/knowme/main/docs/image2.png](https://github.com/mehtahrishi/knowme/blob/main/docs/image2.png)" alt="KnowMe Demo Screenshot" width="800"/>
+ <img src="[https://raw.githubusercontent.com/mehtahrishi/knowme/main/docs/image2.png]" alt="KnowMe Demo Screenshot" width="800"/>
   <h3>🚀 Fast, offline system information tool with beautiful ASCII art</h3>
   [![PyPI version](https://badge.fury.io/py/knowme.svg)](https://badge.fury.io/py/knowme)
  [![NPM version](https://badge.fury.io/js/knowme-cli.svg)](https://badge.fury.io/js/knowme-cli)
