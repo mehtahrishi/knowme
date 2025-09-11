@@ -1,11 +1,7 @@
 #!/bin/bash
 set -e
 
-# Check if pipx is available, if not install via pip with --break-system-packages
-if command -v pipx >/dev/null 2>&1; then
-    pipx install knowme
-else
-    pip3 install knowme --break-system-packages
-fi
+# Install knowme with --break-system-packages to bypass externally managed environment
+pip3 install knowme --break-system-packages
 
 exit 0
