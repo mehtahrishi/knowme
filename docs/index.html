@@ -125,83 +125,30 @@
         </section>
 
         <section class="section">
-            <h2>Prerequisites</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Python</h3>
-                    <div class="code-block">
-                        <pre><code>sudo apt install python3-pip python3-psutil -y</code></pre>
-                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Node.js</h3>
-                    <div class="code-block">
-                        <pre><code>sudo apt-get install nodejs npm</code></pre>
-                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
             <h2>Installation</h2>
             <div class="card-container installation-grid">
                 <div class="card">
-                    <h3>Python Package (pip)</h3>
+                    <h3>Quick Install (Recommended)</h3>
                     <div class="code-block">
-                        <pre><code>mkdir my_project
-cd my_project
-python3 -m venv venv
-source venv/bin/activate
-pip install knowme
-                        </code></pre>
-                        <button class="copy-btn" data-package-manager="pip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <pre><code>curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/install.sh | sudo bash</code></pre>
+                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
+                
                 <div class="card">
-                    <h3>NPM Package</h3>
+                    <h3>APT-style Install</h3>
                     <div class="code-block">
-                        <pre><code>sudo apt-get install python3
-sudo apt install python3-pip python3-psutil -y
-sudo apt-get install nodejs npm
-sudo apt-get update
-sudo npm install -g knowme-cli</code></pre>
-                        <button class="copy-btn" data-package-manager="npm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>NPX Package</h3>
-                    <div class="code-block">
-                        <pre><code>sudo apt-get install python3
-sudo apt install python3-pip python3-psutil -y
-sudo apt-get install nodejs npm
-sudo apt-get update
-npx knowme-cli</code></pre>
-                        <button class="copy-btn" data-package-manager="npm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <pre><code>curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/apt-install.sh | sudo bash</code></pre>
+                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
 
                 <div class="card installation-card-span-3">
-                    <h3>Debian Package (.deb)</h3>
+                    <h3>Direct Download</h3>
                     <div class="code-block">
-                        <pre><code>wget https://github.com/mehtahrishi/knowme/releases/download/v1.0.5/knowme_1.0.5_all.deb
-sudo apt install python3-pip python3-psutil -y
-sudo dpkg -i knowme_1.0.5_all.deb  
-                        </code></pre>
-                        <button class="copy-btn" data-package-manager="deb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-
-                <div class="card installation-card-span-3">
-                    <h3>APT Repository (Debian/Ubuntu)</h3>
-                    <div class="code-block">
-                        <pre><code>sudo apt install python3-pip -y
-echo "deb [trusted=yes] https://mehtahrishi.github.io/knowme/apt stable main" | sudo tee /etc/apt/sources.list.d/knowme.list
-sudo apt update
-sudo apt install knowme</code></pre>
-                        <button class="copy-btn" data-package-manager="apt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <pre><code>wget https://github.com/mehtahrishi/knowme/raw/main/deb/knowme_1.0-1_all.deb
+sudo dpkg -i knowme_1.0-1_all.deb</code></pre>
+                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
             </div>
@@ -214,66 +161,37 @@ sudo apt install knowme</code></pre>
                     <p>Simply run the command:</p>
                     <div class="code-block">
                         <pre><code>knowme</code></pre>
-                        <button class="copy-btn" data-package-manager="generic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2>Uninstall</h2>
+            <h2>Removal</h2>
             <div class="card-container installation-grid-2">
                 <div class="card">
-                    <h3>Python Package Removal</h3>
+                    <h3>Quick Install Removal</h3>
                     <div class="code-block">
-                        <pre><code>deactivate
-cd..
-rm -rf my_project
-sudo apt autoremove -y</code></pre>
+                        <pre><code>sudo uninstall-knowme</code></pre>
                         <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h3>DPKG Package Removal</h3>
+                    <h3>APT-style Removal</h3>
                     <div class="code-block">
-                        <pre><code>sudo apt-get remove knowme
-sudo apt-get autoremove
-rm knowme_1.0.5_all.deb
-                        </code></pre>
+                        <pre><code>sudo apt remove knowme
+sudo apt autoremove</code></pre>
                         <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
 
                 <div class="card installation-card-span-3">
-                    <h3>APT Package Removal</h3>
+                    <h3>Direct Download Removal</h3>
                     <div class="code-block">
-                        <pre><code>sudo apt remove knowme (apt)
-sudo apt autoremove
-sudo find / -name "*knowme*" 2>/dev/null
-sudo rm -rf /usr/local/lib/python3/dist-packages/knowme
-sudo rm /etc/apt/sources.list.d/knowme.list
-sudo apt update
-sudo apt autoremove -y</code></pre>
-                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>NPM Package Removal</h3>
-                    <div class="code-block">
-                        <pre><code>sudo npm uninstall -g knowme-cli
-sudo apt-get remove nodejs npm python3-pip python3-psutil
-sudo apt-get autoremove
-                        </code></pre>
-                        <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>NPX Package Removal</h3>
-                    <div class="code-block">
-                        <pre><code>sudo apt-get remove nodejs npm python3-pip python3-psutil
-sudo apt-get autoremove
-                        </code></pre>
+                        <pre><code>sudo dpkg -r knowme
+sudo apt autoremove</code></pre>
                         <button class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
                     </div>
                 </div>
