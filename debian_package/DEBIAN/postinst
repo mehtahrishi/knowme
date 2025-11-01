@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e
-
-# Install knowme with --break-system-packages to bypass externally managed environment
-pip3 install knowme --break-system-packages
-
-exit 0

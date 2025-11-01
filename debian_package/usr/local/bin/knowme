@@ -1,7 +1,0 @@
-#!/usr/bin/env python3
-import sys
-import os
-sys.path.insert(0, '/usr/local/lib/python3/dist-packages')
-from knowme.__main__ import main
-if __name__ == '__main__':
-    main()
