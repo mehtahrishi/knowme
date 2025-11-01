@@ -9,17 +9,16 @@ A modern neofetch alternative that displays comprehensive system information in 
 curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/install.sh | sudo bash
 ```
 
-### APT Repository (Simple)
+### APT-style Installation
 ```bash
-echo "deb [trusted=yes] https://mehtahrishi.github.io/knowme/deb ./" | sudo tee /etc/apt/sources.list.d/knowme.list
-sudo apt update
-sudo apt install knowme
+curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/apt-install.sh | sudo bash
 ```
 
 ### Direct Download
 ```bash
-wget https://mehtahrishi.github.io/knowme/deb/knowme_1.0-1_all.deb
+wget https://github.com/mehtahrishi/knowme/raw/main/deb/knowme_1.0-1_all.deb
 sudo dpkg -i knowme_1.0-1_all.deb
+sudo apt-get install -f  # Fix any dependencies
 ```
 
 ## Usage
