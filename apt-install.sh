@@ -17,7 +17,8 @@ cat > /var/lib/dpkg/info/knowme.list << 'EOF'
 /usr/bin/knowme
 EOF
 
-# Add to dpkg status
+# Add to dpkg status (only if not already present)
+if ! grep -q "Package: knowme" /var/lib/dpkg/status; then
 cat >> /var/lib/dpkg/status << 'EOF'
 Package: knowme
 Status: install ok installed
@@ -33,6 +34,7 @@ Description: System information display tool
  in a colorful tabular format with ASCII art logos.
 
 EOF
+fi
 
 echo "✅ knowme installed successfully via APT method!"
 echo "Usage: knowme"

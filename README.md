@@ -14,11 +14,9 @@ curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/install.sh 
 curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/apt-install.sh | sudo bash
 ```
 
-### Direct Download
+### Direct Installation
 ```bash
-wget https://github.com/mehtahrishi/knowme/raw/main/deb/knowme_1.0-1_all.deb
-sudo dpkg -i knowme_1.0-1_all.deb
-sudo apt-get install -f  # Fix any dependencies
+curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/direct-install.sh | sudo bash
 ```
 
 ## Usage
@@ -39,8 +37,19 @@ knowme
 
 ## Removal
 
+### Quick Install Removal
+```bash
+sudo uninstall-knowme
+```
+
+### APT-style Removal
 ```bash
 sudo apt remove knowme
-# or
-sudo uninstall-knowme
+sudo apt autoremove
+```
+
+### Direct Installation Removal
+```bash
+sudo dpkg -r knowme
+sudo apt autoremove
 ```
