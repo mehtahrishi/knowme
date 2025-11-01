@@ -4,6 +4,12 @@ A modern neofetch alternative that displays comprehensive system information in 
 
 ## Installation
 
+### Quick Install (Recommended)
+```bash
+curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/install.sh | sudo bash
+```
+
+### APT Repository (Coming Soon)
 ```bash
 echo "deb [trusted=yes] https://mehtahrishi.github.io/knowme/apt stable main" | sudo tee /etc/apt/sources.list.d/knowme.list
 sudo apt update
@@ -29,6 +35,5 @@ knowme
 ## Removal
 
 ```bash
-sudo apt remove knowme
-sudo rm /etc/apt/sources.list.d/knowme.list
+sudo uninstall-knowme
 ```
