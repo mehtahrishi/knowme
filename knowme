@@ -1,0 +1,200 @@
+#!/bin/bash
+
+get_info() {
+    # System condition based on CPU and memory usage
+    CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | sed 's/%us,//')
+    MEM_USAGE_PCT=$(free | grep Mem | awk '{printf "%.0f", $3/$2 * 100.0}')
+    
+    if (( $(echo "$CPU_USAGE > 80" | bc -l 2>/dev/null || echo "0") )) || [ "$MEM_USAGE_PCT" -gt 85 ]; then
+        CONDITION="Heavy"
+    elif (( $(echo "$CPU_USAGE > 50" | bc -l 2>/dev/null || echo "0") )) || [ "$MEM_USAGE_PCT" -gt 70 ]; then
+        CONDITION="Load"
+    else
+        CONDITION="Healthy"
+    fi
+    
+    # OS
+    if [ -f /etc/os-release ]; then
+        OS=$(grep "^NAME=" /etc/os-release | cut -d'"' -f2)
+    else
+        OS=$(uname -s)
+    fi
+    
+    # Basic system info
+    HOSTNAME=$(hostname)
+    KERNEL=$(uname -r)
+    UPTIME=$(uptime -p 2>/dev/null || uptime | awk '{print $3,$4}' | sed 's/,//')
+    
+    # Logged in users
+    USERS=$(who | awk '{print $1}' | sort -u | tr '\n' ', ' | sed 's/,$//')
+    [ -z "$USERS" ] && USERS="None"
+    
+    # CPU info
+    CPU=$(grep "model name" /proc/cpuinfo | head -1 | cut -d':' -f2 | sed 's/^ *//')
+    PHYSICAL_CORES=$(grep "physical id" /proc/cpuinfo | sort -u | wc -l)
+    LOGICAL_CORES=$(nproc)
+    CORES="${PHYSICAL_CORES}P/${LOGICAL_CORES}L"
+    ARCH=$(uname -m)
+    
+    # GPU
+    GPU=$(lspci 2>/dev/null | grep -i vga | cut -d':' -f3 | sed 's/^ *//' | head -1)
+    [ -z "$GPU" ] && GPU="Not detected"
+    
+    # Resolution
+    if command -v xrandr >/dev/null 2>&1; then
+        RESOLUTION=$(xrandr 2>/dev/null | grep '\*' | awk '{print $1}' | head -1)
+    fi
+    if [ -z "$RESOLUTION" ] && [ -n "$DISPLAY" ]; then
+        RESOLUTION=$(xdpyinfo 2>/dev/null | grep dimensions | awk '{print $2}')
+    fi
+    [ -z "$RESOLUTION" ] && RESOLUTION="No display"
+    
+    # Memory with percentage
+    MEM_INFO=$(free -m | grep "Mem:")
+    MEM_TOTAL=$(echo $MEM_INFO | awk '{print $2}')
+    MEM_USED=$(echo $MEM_INFO | awk '{print $3}')
+    MEM_PERCENT=$((MEM_USED * 100 / MEM_TOTAL))
+    RAM="${MEM_USED}MB/${MEM_TOTAL}MB (${MEM_PERCENT}%)"
+    
+    # Battery with status
+    if [ -d /sys/class/power_supply/BAT* 2>/dev/null ]; then
+        BAT_CAP=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null | head -1)
+        BAT_STATUS=$(cat /sys/class/power_supply/BAT*/status 2>/dev/null | head -1)
+        if [ -n "$BAT_CAP" ]; then
+            if [ "$BAT_CAP" -le 30 ]; then
+                BATTERY="${BAT_CAP}% (${BAT_STATUS,,})"
+            else
+                BATTERY="${BAT_CAP}% (${BAT_STATUS,,})"
+            fi
+        else
+            BATTERY="N/A"
+        fi
+    else
+        BATTERY="N/A"
+    fi
+    
+    # CPU Temperature
+    TEMP=$(sensors 2>/dev/null | grep "Core 0" | awk '{print $3}' | head -1)
+    [ -z "$TEMP" ] && TEMP=$(cat /sys/class/thermal/thermal_zone0/temp 2>/dev/null | awk '{print $1/1000"°C"}')
+    [ -z "$TEMP" ] && TEMP="N/A"
+    
+    # Processes
+    PROCESSES="$(ps aux | wc -l) running"
+    
+    # Network info
+    PUBLIC_IP=$(curl -s --max-time 3 ifconfig.me 2>/dev/null || echo "N/A")
+    GATEWAY=$(ip route | grep default | awk '{print $3}' | head -1)
+    PRIVATE_IP=$(hostname -I | awk '{print $1}')
+    MAC=$(ip link show | grep "link/ether" | awk '{print $2}' | head -1)
+}
+
+display_info() {
+    clear
+    
+    # Colors
+    GREEN='\033[0;32m'
+    YELLOW='\033[1;33m'
+    RED='\033[0;31m'
+    BLUE='\033[0;34m'
+    CYAN='\033[0;36m'
+    MAGENTA='\033[0;35m'
+    NC='\033[0m' # No Color
+    
+    # Get terminal width
+    COLS=$(tput cols)
+    
+    # Calculate column widths
+    LABEL_WIDTH=15
+    DATA_WIDTH=$((COLS - LABEL_WIDTH - 5))
+    
+    # Top border
+    printf "+%s+%s+\n" "$(printf '%*s' $LABEL_WIDTH | tr ' ' '-')" "$(printf '%*s' $DATA_WIDTH | tr ' ' '-')"
+    
+    printf "| %-${LABEL_WIDTH}s| ${CYAN}%-${DATA_WIDTH}s${NC}|\n" "Condition" "${CONDITION:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${GREEN}%-${DATA_WIDTH}s${NC}|\n" "OS" "${OS:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${BLUE}%-${DATA_WIDTH}s${NC}|\n" "Hostname" "${HOSTNAME:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${YELLOW}%-${DATA_WIDTH}s${NC}|\n" "Kernel" "${KERNEL:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${MAGENTA}%-${DATA_WIDTH}s${NC}|\n" "Uptime" "${UPTIME:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${GREEN}%-${DATA_WIDTH}s${NC}|\n" "Logged In" "${USERS:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${CYAN}%-${DATA_WIDTH}s${NC}|\n" "CPU" "${CPU:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${BLUE}%-${DATA_WIDTH}s${NC}|\n" "CPU Cores" "${CORES:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${YELLOW}%-${DATA_WIDTH}s${NC}|\n" "Arch" "${ARCH:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${MAGENTA}%-${DATA_WIDTH}s${NC}|\n" "GPU" "${GPU:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${GREEN}%-${DATA_WIDTH}s${NC}|\n" "Resolution" "${RESOLUTION:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${CYAN}%-${DATA_WIDTH}s${NC}|\n" "RAM" "${RAM:0:$DATA_WIDTH}"
+    
+    # Disks sub-table
+    printf "| %-${LABEL_WIDTH}s| ${BLUE}%-${DATA_WIDTH}s${NC}|\n" "Disks" "$(printf "%-20s %-8s %-12s %-8s" "Mount" "Type" "Avail/Total" "Used%")"
+    df -hT | grep -v "tmpfs\|udev\|Filesystem" | while read line; do
+        mount=$(echo "$line" | awk '{print $7}')
+        type=$(echo "$line" | awk '{print $2}')
+        avail=$(echo "$line" | awk '{print $4}')
+        total=$(echo "$line" | awk '{print $3}')
+        used_pct=$(echo "$line" | awk '{print $6}')
+        disk_info=$(printf "%-20s %-8s %-12s %-8s" "${mount:0:20}" "${type:0:8}" "${avail}/${total}" "${used_pct}")
+        printf "| %-${LABEL_WIDTH}s| ${YELLOW}%-${DATA_WIDTH}s${NC}|\n" "" "${disk_info:0:$DATA_WIDTH}"
+    done
+    
+    printf "| %-${LABEL_WIDTH}s| ${MAGENTA}%-${DATA_WIDTH}s${NC}|\n" "Battery" "${BATTERY:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${GREEN}%-${DATA_WIDTH}s${NC}|\n" "CPU Temp" "${TEMP:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${CYAN}%-${DATA_WIDTH}s${NC}|\n" "Processes" "${PROCESSES:0:$DATA_WIDTH}"
+    
+    # Top Processes sub-table
+    printf "| %-${LABEL_WIDTH}s| ${BLUE}%-${DATA_WIDTH}s${NC}|\n" "Top Procs" "$(printf "%-15s %-8s %-6s %-6s" "Process" "PID" "CPU%" "Mem%")"
+    ps aux --sort=-%cpu | awk 'NR>1 && $1 != "root" {printf "%-15s %-8s %-6.1f %-6.1f\n", substr($11,1,15), $2, $3, $4}' | head -5 | while read proc_line; do
+        [ -n "$proc_line" ] && printf "| %-${LABEL_WIDTH}s| ${YELLOW}%-${DATA_WIDTH}s${NC}|\n" "" "${proc_line:0:$DATA_WIDTH}"
+    done
+    
+    printf "| %-${LABEL_WIDTH}s| ${MAGENTA}%-${DATA_WIDTH}s${NC}|\n" "Public IP" "${PUBLIC_IP:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${GREEN}%-${DATA_WIDTH}s${NC}|\n" "Gateway" "${GATEWAY:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${CYAN}%-${DATA_WIDTH}s${NC}|\n" "Private IP" "${PRIVATE_IP:0:$DATA_WIDTH}"
+    printf "| %-${LABEL_WIDTH}s| ${BLUE}%-${DATA_WIDTH}s${NC}|\n" "MAC Address" "${MAC:0:$DATA_WIDTH}"
+    
+    # Open Ports sub-table
+    printf "| %-${LABEL_WIDTH}s| ${YELLOW}%-${DATA_WIDTH}s${NC}|\n" "Open Ports" "$(printf "%-8s %-10s" "Port" "Socket")"
+    ss -tuln | grep LISTEN | awk '{
+        split($5, a, ":");
+        port = a[length(a)];
+        if ($1 ~ /tcp/) socket = "tcp";
+        else if ($1 ~ /udp/) socket = "udp";
+        else socket = "unknown";
+        printf "%-8s %-10s\n", port, socket;
+    }' | while read port_line; do
+        [ -n "$port_line" ] && printf "| %-${LABEL_WIDTH}s| ${MAGENTA}%-${DATA_WIDTH}s${NC}|\n" "" "${port_line:0:$DATA_WIDTH}"
+    done
+    
+    # Bottom border
+    printf "+%s+%s+\n" "$(printf '%*s' $LABEL_WIDTH | tr ' ' '-')" "$(printf '%*s' $DATA_WIDTH | tr ' ' '-')"
+    
+    # OS identifier with ASCII art
+    YELLOW='\033[1;33m'
+    NC='\033[0m'
+    
+    if [[ "$OS" == *"Ubuntu"* ]]; then
+        OS_LOGO="██╗   ██╗██████╗ ██╗   ██╗███╗   ██╗████████╗██╗   ██╗
+██║   ██║██╔══██╗██║   ██║████╗  ██║╚══██╔══╝██║   ██║
+██║   ██║██████╔╝██║   ██║██╔██╗ ██║   ██║   ██║   ██║
+██║   ██║██╔══██╗██║   ██║██║╚██╗██║   ██║   ██║   ██║
+╚██████╔╝██████╔╝╚██████╔╝██║ ╚████║   ██║   ╚██████╔╝
+ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝    ╚═════╝"
+    else
+        OS_LOGO="██╗  ██╗███╗   ██╗ ██████╗ ██╗    ██╗███╗   ███╗███████╗
+██║ ██╔╝████╗  ██║██╔═══██╗██║    ██║████╗ ████║██╔════╝
+█████╔╝ ██╔██╗ ██║██║   ██║██║ █╗ ██║██╔████╔██║█████╗
+██╔═██╗ ██║╚██╗██║██║   ██║██║███╗██║██║╚██╔╝██║██╔══╝
+██║  ██╗██║ ╚████║╚██████╔╝╚███╔███╔╝██║ ╚═╝ ██║███████╗
+╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚══╝╚══╝ ╚═╝     ╚═╝╚══════╝"
+    fi
+    
+    # Center and colorize the logo
+    printf "\n"
+    echo "$OS_LOGO" | while read logo_line; do
+        logo_length=${#logo_line}
+        padding=$(( (COLS - logo_length) / 2 ))
+        printf "%*s${YELLOW}%s${NC}\n" $padding "" "$logo_line"
+    done
+}
+
+# Single execution
+get_info
+display_info

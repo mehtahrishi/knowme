@@ -4,10 +4,10 @@ Architecture: all
 Maintainer: Hrishi Mehta <mehtahrishi@github.com>
 Depends: bash, coreutils, procps, net-tools, curl
 Filename: pool/main/knowme_1.0-1.deb
-Size: 4034
-MD5sum: 5ba64f41e625ccbccab3df90c3688d10
-SHA1: 4145f96ba8224b3f66eedbf1c6c0fab1bb3d0bf6
-SHA256: 94f5bd6f656d492d97d83e7696fa4edcf04c05bae332b0eb7ec7f20e256e6fd8
+Size: 3260
+MD5sum: 01f5cff18b66b2d53652bfb4c11409a8
+SHA1: 66765e92258f608b7598f790b17539c32066d7d2
+SHA256: 995daf887f3f10b36225946edbc306931a3a2b5212b5d933b39290589a445f78
 Section: utils
 Priority: optional
 Description: System information display tool
