@@ -1,0 +1,7 @@
+Origin: KnowMe Repository
+Label: knowme
+Suite: stable
+Codename: stable
+Architectures: amd64 all
+Components: main
+Description: KnowMe system information tool repository
