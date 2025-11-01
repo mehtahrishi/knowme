@@ -7,6 +7,17 @@ fi
 
 echo "Installing knowme via direct method..."
 
+# Clean up any existing installations
+dpkg -r knowme 2>/dev/null || true
+rm -f /usr/bin/knowme /usr/local/bin/knowme
+rm -f /var/lib/dpkg/info/knowme.*
+
+# Remove any duplicate entries from dpkg status
+if [ -f /var/lib/dpkg/status ]; then
+    grep -v "^Package: knowme" /var/lib/dpkg/status > /tmp/dpkg_status_clean || cp /var/lib/dpkg/status /tmp/dpkg_status_clean
+    mv /tmp/dpkg_status_clean /var/lib/dpkg/status
+fi
+
 # Create temporary directory
 TEMP_DIR=$(mktemp -d)
 cd "$TEMP_DIR"

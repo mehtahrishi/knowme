@@ -7,18 +7,28 @@ fi
 
 echo "Installing knowme via APT-style method..."
 
+# Clean up any existing installations
+dpkg -r knowme 2>/dev/null || true
+rm -f /usr/bin/knowme /usr/local/bin/knowme
+rm -f /var/lib/dpkg/info/knowme.*
+
+# Remove any duplicate entries from dpkg status
+if [ -f /var/lib/dpkg/status ]; then
+    grep -v "^Package: knowme" /var/lib/dpkg/status > /tmp/dpkg_status_clean || cp /var/lib/dpkg/status /tmp/dpkg_status_clean
+    mv /tmp/dpkg_status_clean /var/lib/dpkg/status
+fi
+
 # Download and install knowme
 curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/knowme -o /usr/bin/knowme
 chmod +x /usr/bin/knowme
 
-# Create dpkg status entry to make it appear as an APT package
+# Create dpkg info files
 mkdir -p /var/lib/dpkg/info
 cat > /var/lib/dpkg/info/knowme.list << 'EOF'
 /usr/bin/knowme
 EOF
 
-# Add to dpkg status (only if not already present)
-if ! grep -q "Package: knowme" /var/lib/dpkg/status; then
+# Add to dpkg status
 cat >> /var/lib/dpkg/status << 'EOF'
 Package: knowme
 Status: install ok installed
@@ -34,7 +44,6 @@ Description: System information display tool
  in a colorful tabular format with ASCII art logos.
 
 EOF
-fi
 
 echo "✅ knowme installed successfully via APT method!"
 echo "Usage: knowme"
