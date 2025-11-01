@@ -1,23 +1,38 @@
 #!/bin/bash
 
 if [ "$EUID" -ne 0 ]; then
-    echo "Please run with sudo: sudo bash apt-install.sh"
+    echo "Please run with sudo: curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/apt-install.sh | sudo bash"
     exit 1
 fi
 
-echo "Installing knowme via APT-like method..."
+echo "Installing knowme via APT-style method..."
 
-# Download the deb package
-wget -q https://github.com/mehtahrishi/knowme/raw/main/deb/knowme_1.0-1_all.deb -O /tmp/knowme.deb
+# Download and install knowme
+curl -fsSL https://raw.githubusercontent.com/mehtahrishi/knowme/main/knowme -o /usr/bin/knowme
+chmod +x /usr/bin/knowme
 
-# Install it
-dpkg -i /tmp/knowme.deb
+# Create dpkg status entry to make it appear as an APT package
+mkdir -p /var/lib/dpkg/info
+cat > /var/lib/dpkg/info/knowme.list << 'EOF'
+/usr/bin/knowme
+EOF
 
-# Fix any dependency issues
-apt-get install -f -y
+# Add to dpkg status
+cat >> /var/lib/dpkg/status << 'EOF'
+Package: knowme
+Status: install ok installed
+Priority: optional
+Section: utils
+Installed-Size: 32
+Maintainer: Hrishi Mehta <mehtahrishi@github.com>
+Architecture: all
+Version: 1.0-1
+Depends: bash, coreutils, procps, net-tools, curl
+Description: System information display tool
+ A neofetch alternative that displays system information
+ in a colorful tabular format with ASCII art logos.
 
-# Clean up
-rm -f /tmp/knowme.deb
+EOF
 
 echo "✅ knowme installed successfully via APT method!"
 echo "Usage: knowme"
